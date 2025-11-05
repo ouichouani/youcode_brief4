@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+
+<body class=" font-bold bg-black ">
+
+    <header class="border-b-3 h-[80px]  flex justify-between items-center sticky top-0 z-100 w-screen" >
+        <img src="img/index/logo.svg" alt="" class="logo">
+        <nav>
+            <ul class="flex gap-[50px]">
+                <li><a class="text-[1.3em]" href="index.html" >Home</a></li>
+                <li><a class="text-[1.3em]" href="Guide.html">Guide</a></li>
+                <li><a class="text-[1.3em]" href="Market.html">Market</a></li>
+                <li><a class="text-[1.3em]" href="My_Deck.html">My Deck</a></li>
+                <li><a class="text-[1.3em]" href="Favorite.html">Favorite</a></li>
+            </ul>
+        </nav>
+        <img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer">
+
+        
+        <label for="burger_menu_input" class="burger_menu">X
+        </label>
+        
+        <input type="checkbox"  id="burger_menu_input">
+        <aside>
+            <ul class="">
+                <li><a class="" href="index.html" >Home</a></li>
+                <li><a class="" href="Guide.html">Guide</a></li>
+                <li><a class="" href="Market.html">Market</a></li>
+                <li><a class="" href="My_Deck.html">My Deck</a></li>
+                <li><a class="" href="Favorite.html">Favorite</a></li>
+            </ul>
+        </aside>
+
+    </header>
+
+    <main id="market" class=" py-[2%]">
+        <section>
+            <h1 class="text-[6rem]">CARD STORE</h1>
+            <div class="flex w-[100%]  gap-[auto] " >
+                <input type="text" name="" id="" class="bg-white w-[45%] h-[38px] rounded-[1000px]">
+                <ul class="filter flex justify-evenly items-center w-[50%] " id="filter_bar">
+                    <li class="Cool">Cool</li>
+                    <li class="Nice">Nice</li>
+                    <li class="Rare">Rare</li>
+                    <li class="Epic">Epic</li>
+                    <li class="Very_Rare">Very Rare</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="" id="cards_container">
+        </section>
+
+        <section id="pagination_conatiner">
+        </section>
+    </main>
+
+    <footer class=" h-[15rem] flex gap-[134px] border-t-3 justify-center items-center min-h-fit ">
+        <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] ">
+        <section class="liks_container flex gap-[134px]">
+            <ul>
+                <li class="text-[21px] mb-[.5rem] "><span>Game</span></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">How to play</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Devs</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Mobile App</a></li>
+            </ul>
+            <ul>
+                <li class="text-[21px] mb-[.5rem] "><span>Contact</span></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Help/FAQ</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Content</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Address</a></li>
+            </ul>
+            <ul>
+                <li class="text-[21px] mb-[.5rem] "><span>More</span></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Privacy policies</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">About Card wars</a></li>
+                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Get your plushy now !</a></li>
+            </ul>
+        </section>
+    </footer>
+
+    <script src="main.js" ></script>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,414 @@
+:root {
+    --color1: #3E0703;
+    --color2: #660B05;
+    --color3: #8C1007;
+    --color4: #C3503C;
+    --color5: #FFF0C4;
+    --color6: #FEB1A3;
+    --main-color: black;
+
+    --title-size: 3.1rem;
+    --text-size: 20px;
+}
+
+body {
+    color: var(--color5);
+}
+
+header {
+    border-color: var(--color2);
+    background-color: var(--main-color);
+    max-width: 100%;
+
+
+
+
+    aside {
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color2);
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(110%);
+        transition: all .5s ease;
+    }
+
+    #burger_menu_input:checked+aside {
+        transform: translate(0);
+    }
+
+    aside,
+    .burger_menu,
+    .burger_menu+input {
+        display: none;
+    }
+}
+
+footer {
+    ul li:first-child {
+        color: var(--color4);
+    }
+}
+
+img {
+    object-fit: cover;
+}
+
+input {
+    background-color: var(--color4);
+}
+
+
+
+
+
+
+/* --home-- */
+
+.hero {
+    height: calc(100vh - 80px);
+    position: relative;
+}
+
+.hero .home_background {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    object-fit: cover;
+}
+
+.hero article {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-left: 10%;
+    gap: 10px;
+}
+
+.hero article h1 {
+    font-size: var(--title-size);
+}
+
+.hero article p {
+    width: 850px;
+    font-size: var(--text-size);
+}
+
+/* section 2 */
+
+section:nth-child(2) {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin: 10rem 0 10rem 7rem;
+}
+
+section:nth-child(2) article {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    /* gap: 10px; */
+
+
+}
+
+section:nth-child(2) article h2 {
+    font-size: var(--title-size);
+    margin: 30px;
+    width: 100%;
+}
+
+section:nth-child(2) article p {
+    font-size: 30px;
+}
+
+section:nth-child(2) article a {
+
+    display: inline-block;
+    height: 61px;
+    width: 167px;
+    background-color: var(--color4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 2rem;
+    border-color: transparent;
+    transition: all .5s ease-in-out;
+
+}
+
+section:nth-child(2) article a:hover {
+    background-color: #EF664E;
+    border: 1px solid #FEB1A3;
+    box-shadow: 0 0 60px 10px #FF0101;
+}
+
+section:nth-child(2) article p {
+
+    font-size: 30px;
+    padding-left: 10%;
+
+}
+
+section:nth-child(2) img {
+    height: 400px;
+    object-fit: cover;
+
+}
+
+/* section 3 */
+
+section:nth-child(3) {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+#market {
+    max-width: 100vw;
+    padding: 0 15%;
+
+
+
+    #pagination_conatiner {
+        display: flex;
+        justify-content: end;
+        gap: 15px;
+        height: fit-content;
+        margin-top: 20px;
+        margin-bottom: 50px;
+
+        button {
+            height: 50px;
+            width: 50px;
+            background-color: var(--color5);
+            color: var(--color4);
+            transition: all .5s ease;
+        }
+
+
+
+        .activate {
+
+            background-color: var(--color4);
+            color: var(--color5);
+            transform: rotate(45deg);
+
+            p {
+                transform: rotate(-45deg);
+            }
+        }
+
+    }
+
+    #cards_container {
+        width: fit-content;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        gap: 10px;
+        margin: 0;
+        margin-top: 100px;
+
+        .card {
+            position: relative;
+            overflow: hidden;
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            aside {
+                width: 70%;
+                padding: 10px;
+                background-color: var(--color4);
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translateX(110%);
+                transition: all .5s ease;
+                border-radius: 0 0 0 10px;
+
+                display: flex;
+                justify-content: space-evenly;
+
+                button{
+                    width: 30%;
+                    max-width: 30px;
+                    cursor: pointer;
+
+                    img{
+                        width: 100%;
+                    }
+                }
+
+
+            }
+
+        }
+
+        .card:hover {
+            aside {
+                transform: translateX(0);
+            }
+        }
+    }
+
+}
+
+
+
+
+@media (max-width : 767px) {
+
+    header {
+
+        img {
+            width: 50px;
+        }
+
+        nav,
+        nav+img {
+            display: none;
+        }
+
+        aside,
+        .burger_menu {
+            display: block;
+
+        }
+
+
+    }
+
+
+    #market {
+        padding: 0;
+
+        section:nth-child(1) {
+            padding: 5%;
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            div {
+                flex-direction: column;
+            }
+
+            div * {
+                font-size: 13px;
+                width: 100%;
+                height: 25px;
+            }
+
+            div ul {
+                margin-top: 30px;
+            }
+        }
+
+        #cards_container {
+            margin: 0;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+        #pagination_conatiner button {
+
+            height: 35px !important;
+            width: 35px !important;
+        }
+    }
+
+
+    footer {
+        flex-direction: column;
+        border-color: var(--color1);
+        gap: 30px;
+        padding: 0 10px 30px 10px;
+        margin-top: 20px;
+
+        section {
+            margin: 0 !important;
+            gap: 5px;
+            overflow: hidden;
+            align-items: unset !important;
+            width: 100vw;
+
+            ul {
+                width: calc(100% / 3);
+
+                li {
+                    text-align: center;
+
+                    a {
+                        font-size: 12px;
+
+                    }
+
+                    span {
+                        font-size: 21px;
+                    }
+
+                }
+            }
+        }
+    }
+}
