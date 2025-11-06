@@ -1,229 +1,19 @@
 /* --home-- */
 
-.hero {
-    height: calc(100vh - 80px);
-    position: relative;
-}
-
-.hero .home_background {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    width: 100%;
-    max-height: calc(100vh - 80px);
-    object-fit: cover;
-}
-
-.hero article {
-    display: flex;
-    flex-direction: column;
-    padding-top: 5%;
-    padding-left: 10%;
-    gap: 10px;
-}
-
-.hero article h1 {
-    font-size: var(--title-size);
-}
-
-.hero article p {
-    width: 850px;
-    font-size: var(--text-size);
-}
-
-/* section 2 */
-
-section:nth-child(2) {
-    display: flex;
-    align-items: center;
-    /* margin: auto; */
-    margin: 10rem 0 10rem 7rem;
-}
-
-section:nth-child(2) article {
-    width: 50%;
-    /* height: 50%; */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: column;
-}
-
-section:nth-child(2) article h2 {
-    font-size: var(--title-size);
-    margin: 30px;
-    width: 100%;
-}
-
-section:nth-child(2) article p {
-    font-size: 30px;
-}
-
-section:nth-child(2) article a,
-section:nth-child(3) article a {
-
-    display: inline-block;
-    height: 61px;
-    width: 167px;
-    background-color: var(--color4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 2rem;
-    border-color: transparent;
-    transition: all .5s ease-in-out;
-
-}
-
-section:nth-child(2) article a:hover,
-section:nth-child(3) article a:hover {
-    background-color: #EF664E;
-    border: 1px solid #FEB1A3;
-    box-shadow: 0 0 60px 10px #FF0101;
-}
-
-section:nth-child(2) article p {
-
-    font-size: 30px;
-    padding-left: 10%;
-
-}
-
-section:nth-child(2) img {
-    height: 400px;
-    object-fit: cover;
-
-}
-
-
-section:nth-child(3) {
-    display: flex;
-    margin: 10rem 0 10rem 7rem;
-    
-}
-
-section:nth-child(3) article {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    
-    gap: 10px;
-    align-items: flex-end;
-
-}
-
-section:nth-child(3) article h2 {
-    font-size: var(--title-size);
-    margin: 30px;
-    width: 100%;
-}
-
-section:nth-child(3) article p {
-
-    font-size: var(--text-size);
-    padding-left: 10%;
-}
-
-
-.cart_side_bar {
-
-    position: fixed;
-    top: 80px;
-    right: -100%;
-    top: 0;
-    z-index: 1000;
-    height: 100vh ;
-    transition: all .5s ease;
-    background-color: var(--color1);
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    
-
-    h2{
-        font-size: var(--title-size);
-        width: 100%;
-        padding: 10px;        
-    }
-    button {
-        width: 50px;
-        margin: 10px;
-        margin-top: 20px;
-    }
-
-    section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin: 0px;
-        height: fit-content;
-        
-        padding: 10px;
-        overflow-y: auto;
-
-
-        .card {
-            position: relative;
-            overflow: hidden;
-            height: max-content;
-            max-width: 300px;
-
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            aside {
-                width: 90%;
-                /* height: 50px; */
-                padding: 10px;
-                background-color: var(--color4);
-                position: absolute;
-                top: 0;
-                right: 0;
-                transform: translateX(110%);
-                transition: all .5s ease;
-                border-radius: 0 0 0 10px;
-
-                display: flex;
-                justify-content: space-evenly;
-
-                button {
-
-                    width: 30px;
-                    margin: auto 0 auto;
-                    cursor: pointer;
-
-                    img {
-                        width: 100%;
-                        object-fit: contain;
-                    }
-                }
-
-            }
-
-        }
-
-        .card:hover {
-            aside {
-                transform: translateX(0);
-            }
-        }
-
-    }
-}
-
-
-
-
-@media (max-width : 767px) {
+#home {
 
     .hero {
-        height: 40vh;
+        height: calc(100vh - 80px);
         position: relative;
+    }
+
+    .hero .home_background {
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+        object-fit: cover;
     }
 
     .hero article {
@@ -231,63 +21,193 @@ section:nth-child(3) article p {
         flex-direction: column;
         padding-top: 5%;
         padding-left: 10%;
+        gap: 10px;
     }
 
     .hero article h1 {
-        font-size: 30px;
+        font-size: var(--title-size);
     }
 
     .hero article p {
-        display: none;
+        width: 850px;
+        font-size: var(--text-size);
     }
 
+    /* section 2 */
+
     section:nth-child(2) {
-        flex-direction: column;
-        margin: 0;
-        gap: 50px;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        /* margin: auto; */
+        margin: 10rem 0 10rem 7rem;
     }
 
     section:nth-child(2) article {
-        width: 100%;
+        width: 50%;
+        /* height: 50%; */
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
     }
 
     section:nth-child(2) article h2 {
-        font-size: 20px;
-        margin: 0 0 20px;
+        font-size: var(--title-size);
+        margin: 30px;
+        width: 100%;
     }
 
     section:nth-child(2) article p {
-        font-size: 15px !important;
+        font-size: 30px;
     }
 
-    section:nth-child(2) article a ,
+    section:nth-child(2) article a,
     section:nth-child(3) article a {
 
-        height: fit-content;
-        width: fit-content;
-        font-size: 12px;
-        padding: 10px;
+        display: inline-block;
+        height: 61px;
+        width: 167px;
+        background-color: var(--color4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-top: 2rem;
+        border-color: transparent;
+        transition: all .5s ease-in-out;
 
     }
 
+    section:nth-child(2) article a:hover,
+    section:nth-child(3) article a:hover {
+        background-color: #EF664E;
+        border: 1px solid #FEB1A3;
+        box-shadow: 0 0 60px 10px #FF0101;
+    }
+
+    section:nth-child(2) article p {
+
+        font-size: 30px;
+        padding-left: 10%;
+
+    }
 
     section:nth-child(2) img {
-        height: 200px;
+        height: 400px;
+        object-fit: cover;
+
     }
 
 
     section:nth-child(3) {
-                margin: 0;
+        display: flex;
+        margin: 10rem 0 10rem 7rem;
 
     }
+
+    section:nth-child(3) article {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        gap: 10px;
+        align-items: flex-end;
+
+    }
+
     section:nth-child(3) article h2 {
-        font-size: 20px;
-        margin: 0 0 20px;
+        font-size: var(--title-size);
+        margin: 30px;
+        width: 100%;
     }
 
     section:nth-child(3) article p {
-        font-size: 15px;
+
+        font-size: var(--text-size);
         padding-left: 10%;
+    }
+
+}
+
+
+
+
+
+
+
+
+@media (max-width : 767px) {
+    #home {
+
+        .hero {
+            height: 40vh;
+            position: relative;
+        }
+
+        .hero article {
+            display: flex;
+            flex-direction: column;
+            padding-top: 5%;
+            padding-left: 10%;
+        }
+
+        .hero article h1 {
+            font-size: 30px;
+        }
+
+        .hero article p {
+            display: none;
+        }
+
+        section:nth-child(2) {
+            flex-direction: column;
+            margin: 0;
+            gap: 50px;
+            padding: 10px;
+        }
+
+        section:nth-child(2) article {
+            width: 100%;
+        }
+
+        section:nth-child(2) article h2 {
+            font-size: 20px;
+            margin: 0 0 20px;
+        }
+
+        section:nth-child(2) article p {
+            font-size: 15px !important;
+        }
+
+        section:nth-child(2) article a,
+        section:nth-child(3) article a {
+
+            height: fit-content;
+            width: fit-content;
+            font-size: 12px;
+            padding: 10px;
+
+        }
+
+
+        section:nth-child(2) img {
+            height: 200px;
+        }
+
+
+        section:nth-child(3) {
+            margin: 0;
+
+        }
+
+        section:nth-child(3) article h2 {
+            font-size: 20px;
+            margin: 0 0 20px;
+        }
+
+        section:nth-child(3) article p {
+            font-size: 15px;
+            padding-left: 10%;
+        }
     }
 }
