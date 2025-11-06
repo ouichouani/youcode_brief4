@@ -44,6 +44,9 @@ header {
     }
 
     #burger_menu_input:checked+aside {
+        /*  */
+        display: block;
+        /*  */
         transform: translate(0);
     }
 
@@ -190,7 +193,7 @@ input {
             width: 40px;
         }
 
-        aside,
+        /* aside, */
         .burger_menu {
             display: block;
 
