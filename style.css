@@ -1,0 +1,247 @@
+:root {
+    --color1: #3E0703;
+    --color2: #660B05;
+    --color3: #8C1007;
+    --color4: #C3503C;
+    --color5: #FFF0C4;
+    --color6: #FEB1A3;
+    --main-color: black;
+
+    --title-size: 3.1rem;
+    --text-size: 20px;
+}
+
+body {
+    color: var(--color5);
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    border-color: var(--color2);
+    background-color: var(--main-color);
+    max-width: 100%;
+
+
+    aside {
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color2);
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(110%);
+        transition: all .5s ease;
+        padding: 20px;
+    }
+
+    aside ul {
+        margin-top: 20%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #burger_menu_input:checked+aside {
+        transform: translate(0);
+    }
+
+    aside,
+    .burger_menu,
+    .burger_menu+input {
+        display: none;
+    }
+
+    .burger_menu {
+        z-index: 100;
+        margin: 20px;
+
+        img {
+            width: 50px;
+            margin-top: 20px;
+            /* margin-left: -30px ; */
+
+        }
+    }
+}
+
+footer {
+    ul li:first-child {
+        color: var(--color4);
+    }
+}
+
+img {
+    object-fit: cover;
+}
+
+input {
+    background-color: var(--color4);
+}
+
+.cart_side_bar {
+
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    top: 0;
+    z-index: 1000;
+    height: 100vh;
+    transition: all .5s ease;
+    background-color: var(--color1);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+
+    h2 {
+        font-size: var(--title-size);
+        width: 100%;
+        padding: 10px;
+    }
+
+    button {
+        width: 50px;
+        margin: 10px;
+        margin-top: 20px;
+    }
+
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 0px;
+        height: fit-content;
+
+        padding: 10px;
+        overflow-y: auto;
+
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            height: max-content;
+            max-width: 300px;
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            aside {
+                width: 90%;
+                padding: 10px;
+                background-color: var(--color4);
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translateX(110%);
+                transition: all .5s ease;
+                border-radius: 0 0 0 10px;
+
+                display: flex;
+                justify-content: space-evenly;
+
+                button {
+
+                    width: 30px;
+                    margin: auto 0 auto;
+                    cursor: pointer;
+
+                    img {
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+
+            }
+
+        }
+
+        .card:hover {
+            aside {
+                transform: translateX(0);
+            }
+        }
+
+    }
+}
+
+
+@media (max-width : 767px) {
+
+    header {
+
+        img {
+            width: 80px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav+img {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+        }
+
+        aside,
+        .burger_menu {
+            display: block;
+
+        }
+
+
+
+
+    }
+
+    .cart_side_bar {
+        width: 100vw;
+
+        aside {
+            button {
+                width: 20px !important;
+            }
+        }
+    }
+
+    footer {
+        flex-direction: column;
+        border-color: var(--color1);
+        gap: 30px;
+        padding: 0 10px 30px 10px;
+        margin-top: 20px;
+
+        section {
+            margin: 0 !important;
+            gap: 5px;
+            overflow: hidden;
+            align-items: unset !important;
+            width: 100vw;
+
+            ul {
+                width: calc(100% / 3);
+
+                li {
+                    text-align: center;
+
+                    a {
+                        font-size: 12px;
+
+                    }
+
+                    span {
+                        font-size: 21px;
+                    }
+
+                }
+            }
+        }
+    }
+}

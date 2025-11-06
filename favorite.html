@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style/home.css">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/market.css">
 
     <title>Document</title>
 </head>
@@ -47,51 +48,29 @@
 
 
 
-    <main id="home">
 
-        <section class="hero">
-            <article>
-                <h1>WELCOME TO CARDWARS</h1>
-                <p>"Card Wars" is the beloved, in-universe collectible card game from Adventure Time, which gained
-                    legendary status after the famous Season 4 episode where Jake fiercely battles Finn. The real-life
-                    version is a two-player, lane-based strategy game where players summon creatures, cast spells, and
-                    dep</p>
-            </article>
-            <img src="img/index/home_background.png" alt="home_background" class="home_background">
-        </section>
-
+    <main id="market" class=" py-[2%]">
         <section>
-            <article>
-                <h2>START YOUR COLLECTION</h2>
-                <p>Would you like to know where you can find the actual physical or digital versions of the Card Wars
-                    game?</p>
-                <a href="">Acceder au marché</a>
-            </article>
-            <img src="img/index/logo.svg" alt="" class="home_logo">
-        </section>
-
-        <section>
-            <div class="slider">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
-                <img src="" alt="" class="card">
+            <h1 class="text-[6rem]">FAVORITE</h1>
+            <div class="flex w-[100%]  gap-[auto] ">
+                <input type="text" name="" id="" class="bg-white w-[45%] h-[38px] rounded-[1000px]">
+                <ul class="filter flex justify-evenly items-center w-[50%] " id="filter_bar">
+                    <li class="Cool">Cool</li>
+                    <li class="Nice">Nice</li>
+                    <li class="Rare">Rare</li>
+                    <li class="Epic">Epic</li>
+                    <li class="Very_Rare">Very Rare</li>
+                </ul>
             </div>
+        </section>
 
-            <article>
-                <h2>DISCOVER THE GAME</h2>
-                <p>"Card Wars" is the beloved, in-universe collectible card game from Adventure Time, which gained legendary status after the famous Season 4 episode where Jake fiercely battles Finn. The real-life version is a two-player, lane-based strategy game where players summon creatures, cast spells, and deploy buildings across four distinct Landscapes. Its most iconic, meme-worthy mechanic is the ability to "Floop the Pig," a unique action a creature can take instead of attacking, often involving a powerful ability or sacrifice. The game's objective is to reduce your opponent's Hit Points from 25 to zero, all while hilariously debating who is the "Cool Guy" and who is the "Dweeb." With its vibrant, imaginative art and easy-to-learn but strategic gameplay, Card Wars successfully captures the quirky, competitive spirit of the show.
-                </p>
-                <a href="">discover the game</a>
-            </article>
+        <section class="" id="cards_container">
+        </section>
+
+        <section id="pagination_conatiner">
         </section>
     </main>
+
 
     <footer class=" h-[15rem] flex gap-[134px] border-t-3 justify-center items-center min-h-fit ">
         <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] ">
@@ -117,8 +96,7 @@
         </section>
     </footer>
 
-    <script src="js/index.js"></script>
-
+    <script src="js/favorite.js"></script>
 
 </body>
 
