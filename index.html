@@ -5,26 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/home.css">
+
     <title>Document</title>
 </head>
 
 <body class=" font-bold bg-black ">
 
 
-    <header class="border-b-3 h-[80px] flex justify-between items-center sticky top-0 z-100" >
+    <header class="border-b-3 h-[80px]  flex justify-between items-center sticky top-0 z-100 w-screen">
         <img src="img/index/logo.svg" alt="" class="logo">
         <nav>
             <ul class="flex gap-[50px]">
-                <li><a class="text-[1.3rem]" href="index.html" >Home</a></li>
-                <li><a class="text-[1.3rem]" href="Guide.html">Guide</a></li>
-                <li><a class="text-[1.3rem]" href="Market.html">Market</a></li>
-                <li><a class="text-[1.3rem]" href="My_Deck.html">My Deck</a></li>
-                <li><a class="text-[1.3rem]" href="Favorite.html">Favorite</a></li>
+                <li><a class="text-[1.3em]" href="index.html">Home</a></li>
+                <li><a class="text-[1.3em]" href="Guide.html">Guide</a></li>
+                <li><a class="text-[1.3em]" href="Market.html">Market</a></li>
+                <li><a class="text-[1.3em]" href="My_Deck.html">My Deck</a></li>
+                <li><a class="text-[1.3em]" href="Favorite.html">Favorite</a></li>
             </ul>
         </nav>
-        <img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer">
+        <img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer" id="cart_button">
+
+
+        <label for="burger_menu_input" class="burger_menu">X
+        </label>
+
+        <input type="checkbox" id="burger_menu_input">
+        <aside>
+            <ul class="">
+                <li><a class="" href="index.html">Home</a></li>
+                <li><a class="" href="Guide.html">Guide</a></li>
+                <li><a class="" href="Market.html">Market</a></li>
+                <li><a class="" href="My_Deck.html">My Deck</a></li>
+                <li><a class="" href="Favorite.html">Favorite</a></li>
+            </ul>
+        </aside>
+
     </header>
+
 
 
     <main>
@@ -32,7 +51,10 @@
         <section class="hero">
             <article>
                 <h1>WELCOME TO CARDWARS</h1>
-                <p>"Card Wars" is the beloved, in-universe collectible card game from Adventure Time, which gained legendary status after the famous Season 4 episode where Jake fiercely battles Finn. The real-life version is a two-player, lane-based strategy game where players summon creatures, cast spells, and dep</p>
+                <p>"Card Wars" is the beloved, in-universe collectible card game from Adventure Time, which gained
+                    legendary status after the famous Season 4 episode where Jake fiercely battles Finn. The real-life
+                    version is a two-player, lane-based strategy game where players summon creatures, cast spells, and
+                    dep</p>
             </article>
             <img src="img/index/home_background.png" alt="home_background" class="home_background">
         </section>
@@ -40,7 +62,8 @@
         <section>
             <article>
                 <h2>START YOUR COLLECTION</h2>
-                <p>Would you like to know where you can find the actual physical or digital versions of the Card Wars game?</p>
+                <p>Would you like to know where you can find the actual physical or digital versions of the Card Wars
+                    game?</p>
                 <a href="">Acceder au marché</a>
             </article>
             <img src="img/index/logo.svg" alt="" class="home_logo">
@@ -62,53 +85,38 @@
 
             <article>
                 <h2>DISCOVER THE GAME</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sapiente error reprehenderit autem.
-                    Corrupti earum nemo assumenda labore laboriosam adipisci tempore odio quam facilis rerum ipsam, ad
-                    dolores corporis nulla amet. Animi non itaque fugiat adipisci illo! Laudantium a tenetur praesentium
-                    iste illo inventore neque fuga corporis iusto eaque animi maiores saepe, perferendis vero ratione
-                    porro, similique ab ullam tempora amet voluptas corrupti id temporibus! Minus commodi rerum magnam
-                    laborum. Enim iste inventore nihil fugiat saepe nam accusantium provident voluptatum animi facilis
-                    ex laborum, dicta aliquam quos deserunt iure pariatur deleniti rerum suscipit. Laborum molestiae
-                    illum illo fuga, esse, facilis harum distinctio corporis aperiam animi mollitia commodi ratione
-                    eaque maiores? Hic possimus corrupti reiciendis autem mollitia provident est quasi sit, a nesciunt,
-                    facilis eligendi. Sint maxime iusto reprehenderit nihil tempore perspiciatis illum cumque
-                    repellendus expedita sit! Vitae possimus distinctio nulla a explicabo iste voluptatum ipsa. Facere
-                    quia autem laborum esse cum, delectus voluptas vel beatae provident alias sapiente ratione mollitia
-                    dignissimos! Ducimus animi eaque iusto rerum? Rem beatae fuga porro quae consectetur quam labore
-                    nobis? Magni quam veniam soluta sed? Sequi id a nostrum necessitatibus quasi cupiditate voluptatibus
-                    accusamus maxime facere cum. Excepturi dolores nisi dignissimos corrupti autem recusandae impedit!
+                <p>"Card Wars" is the beloved, in-universe collectible card game from Adventure Time, which gained legendary status after the famous Season 4 episode where Jake fiercely battles Finn. The real-life version is a two-player, lane-based strategy game where players summon creatures, cast spells, and deploy buildings across four distinct Landscapes. Its most iconic, meme-worthy mechanic is the ability to "Floop the Pig," a unique action a creature can take instead of attacking, often involving a powerful ability or sacrifice. The game's objective is to reduce your opponent's Hit Points from 25 to zero, all while hilariously debating who is the "Cool Guy" and who is the "Dweeb." With its vibrant, imaginative art and easy-to-learn but strategic gameplay, Card Wars successfully captures the quirky, competitive spirit of the show.
                 </p>
                 <a href="">discover the game</a>
             </article>
         </section>
     </main>
 
-
-    <footer class=" h-[15rem] flex gap-[134px] border-t-3 justify-center items-center ">
+    <footer class=" h-[15rem] flex gap-[134px] border-t-3 justify-center items-center min-h-fit ">
         <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] ">
-        <span class="liks_container flex gap-[134px]">
+        <section class="liks_container flex gap-[134px]">
             <ul>
-                <li class="text-[21px] mb-[.5rem] "><a href="">Game things</a></li>
+                <li class="text-[21px] mb-[.5rem] "><span>Game</span></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">How to play</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Devs</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Mobile App</a></li>
             </ul>
             <ul>
-                <li class="text-[21px] mb-[.5rem] "><a href="">Contact</a></li>
+                <li class="text-[21px] mb-[.5rem] "><span>Contact</span></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Help/FAQ</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Content</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Address</a></li>
             </ul>
             <ul>
-                <li class="text-[21px] mb-[.5rem] "><a href="">More</a></li>
+                <li class="text-[21px] mb-[.5rem] "><span>More</span></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Privacy policies</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">About Card wars</a></li>
                 <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Get your plushy now !</a></li>
             </ul>
-        </span>
+        </section>
     </footer>
 
-        <script src="main.js" ></script>
+    <script src="js/index.js"></script>
 
 
 </body>
