@@ -78,7 +78,7 @@ function add_to_cart(added_card) {
         console.log(cart)
 
     } else {
-        added_card.quantity = 1 ;
+        added_card.quantity = 1;
         cart.push(added_card)
         change_local_storage('cart', cart)
         console.log(cart)
@@ -125,7 +125,7 @@ function show_cards(index, array) {
         if (array.length - ((index - 1) * 12 + i) > 0) {
 
             CARDS_CONTAINER.children[i].children[1].children[1].addEventListener('click', (e) => {
-                unlike(array[i], e.target );
+                unlike(array[i], e.target);
                 // e.target.remove
             });
 
@@ -185,10 +185,18 @@ function display_cart() {
 
     cart_side_bar.className = 'cart_side_bar';
     cart_side_bar.innerHTML = `
-    <div class="flex justify-between w-[100%]">
-    <h2>CART</h2>
-    <button><img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer"></button>
-    </div>
+
+            <div class='header' >
+            <h2>CART</h2>
+            <button><img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer"></button>
+        </div>
+
+        <div class="controle">
+            <span class="total_price">${200}</span>
+            <button class="buy">buy</button>
+            <button class="clear">clear</button>
+        </div>
+        
     `
     cart_side_bar.appendChild(cart_container);
 
@@ -200,7 +208,7 @@ function display_cart() {
             card.innerHTML = `
             <img src="${element.img}" alt="">
             <aside>
-            <span>${element.price * element.quantity }$</span>
+            <span>${element.price * element.quantity}$</span>
             <span class="quantity" >${element.quantity}</span>
             <div>
                 <button class="add" ><img src = "./img/assets/add.svg"></button>
@@ -218,11 +226,11 @@ function display_cart() {
 
             });
             last_card.querySelector('.minus').addEventListener('click', () => {
-                if(element.quantity == 1){
+                if (element.quantity == 1) {
                     add_to_cart(element);
                     display_cart_card();
-                    
-                }else{
+
+                } else {
                     element.quantity--
                     display_cart_card();
                 }
