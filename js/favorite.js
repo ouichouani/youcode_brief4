@@ -28,8 +28,8 @@ Array.from(FILTAR_BAR.children).forEach((item) => {
 })
 
 
-SHOW_CARDS(1, liked_cards, 5);
-HANDLE_PAGINATION(liked_cards, 0, 5);
+SHOW_CARDS(1, liked_cards, 12);
+HANDLE_PAGINATION(liked_cards, 0, 12);
 
 
 

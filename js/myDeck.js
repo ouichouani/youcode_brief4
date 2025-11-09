@@ -49,5 +49,5 @@ function REMOVE_FROM_DECK(element , page_number) {
     HANDLE_PAGINATION(collection, page_number - 1, 4);
 }
 
-SHOW_CARDS(1, collection, 4)
-HANDLE_PAGINATION(collection, 0, 4);
+SHOW_CARDS(1, collection, 12)
+HANDLE_PAGINATION(collection, 0, 12);
