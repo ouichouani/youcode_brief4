@@ -120,10 +120,10 @@ function LIKE(liked_element, target) {
 
 }
 
-function SHOW_CARDS(index, array, limit_cards) {
+function SHOW_CARDS(start_page, array, limit_cards) {
     CARDS_CONTAINER.innerHTML = '';
 
-    for (let i = (index * limit_cards) - limit_cards; i < index * limit_cards && i < array.length; i++) {
+    for (let i = (start_page * limit_cards) - limit_cards; i < start_page * limit_cards && i < array.length; i++) {
         if (array.length > i) {
             CARDS_CONTAINER.innerHTML += `
             <div class="card">
@@ -140,11 +140,11 @@ function SHOW_CARDS(index, array, limit_cards) {
 
     //ADD EVENT LISTINER TO EVERY BUTTON INSIDE CARDS
     for (let i = 0; i < limit_cards; i++) {
-        if (array.length - ((index - 1) * limit_cards + i) > 0) {
+        if (array.length - ((start_page - 1) * limit_cards + i) > 0) {
 
             CARDS_CONTAINER.children[i].children[1].children[1].addEventListener('click', (e) => {
-                LIKE(array[i], e.target, index);
-                // LIKE(array[i], e.target , ((index * limit_cards) - limit_cards) + i);
+                // i + START start_page THAT SHOWS THE CONTENT OF THIS PAGE
+                LIKE(array[i + ((start_page * limit_cards) - limit_cards)], e.target, start_page);
             });
 
             CARDS_CONTAINER.children[i].children[1].children[2].addEventListener('click', (e) => {
@@ -200,19 +200,17 @@ function DISPLAY_CART() {
         </div>
 
         <div class="controle">
-            <span class="total_price">${cart.reduce((total_quantity , current_quantity) =>total_quantity + (current_quantity.quantity * current_quantity.price ) , 0)}</span>
+            <span class="total_price">${cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0)}</span>
             <button class="buy">buy</button>
             <button class="clear">clear</button>
         </div>
-        
-
     `
+
     cart_side_bar.appendChild(cart_container);
 
     function display_cart_cards() {
-        
-        cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity , current_quantity) =>total_quantity + (current_quantity.quantity * current_quantity.price ) , 0) ;
-        
+
+        cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0);
         cart_container.innerHTML = '';
         cart.forEach(element => {
             const card = document.createElement('div')
@@ -220,7 +218,7 @@ function DISPLAY_CART() {
             card.innerHTML = `
             <img src="${element.img}" alt="">
             <aside>
-            <span>${element.price * element.quantity}$</span>
+            <span class="total_price">${element.price * element.quantity}$</span>
             <span class="quantity" >${element.quantity}</span>
             <div>
                 <button class="add" ><img src = "./img/assets/add.svg"></button>
@@ -230,41 +228,62 @@ function DISPLAY_CART() {
             </aside>
             `
             cart_container.appendChild(card);
-            const last_card = cart_container.lastElementChild;
+            const REFRECH_TEXTCONTENT = () => {
+                card.querySelector('.total_price').textContent = `${element.price * element.quantity}$`;
+                card.querySelector('.quantity').textContent = element.quantity;
+                cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0);
 
-            last_card.querySelector('.add').addEventListener('click', () => {
+            }
+
+            card.querySelector('.add').addEventListener('click', () => {
                 element.quantity++
-                CHANGE_LOCAL_STORAGE('cart' , cart) ;
-                display_cart_cards();
-
+                REFRECH_TEXTCONTENT()
+                CHANGE_LOCAL_STORAGE('cart', cart);
             });
-            last_card.querySelector('.minus').addEventListener('click', () => {
+
+            card.querySelector('.minus').addEventListener('click', () => {
                 if (element.quantity == 1) {
                     ADD_TO_CART(element);
                     display_cart_cards();
 
                 } else {
-                    element.quantity-- ;
-                    CHANGE_LOCAL_STORAGE('cart' , cart) ;
-                    display_cart_cards();
+                    element.quantity--;
+                    REFRECH_TEXTCONTENT()
+                    CHANGE_LOCAL_STORAGE('cart', cart);
                 }
 
             });
-            last_card.querySelector('.cart').addEventListener('click', () => {
+
+            card.querySelector('.cart').addEventListener('click', () => {
                 ADD_TO_CART(element);
                 display_cart_cards();
             });
+
         });
     }
 
     function clear_cart() {
         cart_container.innerHTML = '';
         cart.length = 0
-        CHANGE_LOCAL_STORAGE('cart' , []);
+        CHANGE_LOCAL_STORAGE('cart', []);
     }
 
     function buy_cards() {
-        CHANGE_LOCAL_STORAGE('collection' , collection.concat(cart) ) ;
+
+        collection.forEach(collection_item => {
+            cart.forEach(cart_item => {
+                console.log('collection : ', collection_item.id, ' cart : ', cart_item.id)
+                if (collection_item.id == cart_item.id) {
+
+                    collection_item.quantity += cart_item.quantity;
+                    cart = cart.filter(item => item.id != cart_item.id);
+
+                }
+            })
+        })
+
+        CHANGE_LOCAL_STORAGE('collection', collection.concat(cart));
+
         clear_cart()
         display_cart_cards()
 

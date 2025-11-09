@@ -15,7 +15,7 @@ function LIKE(liked_element, target , index_pag) {
         liked_cards = liked_cards.filter((item) => item.liked);
 
         HANDLE_PAGINATION(liked_cards, index_pag - 1 , 5);
-        SHOW_CARDS(1, liked_cards, 5);
+        SHOW_CARDS(index_pag, liked_cards, 5);
     }
 
 }

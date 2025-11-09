@@ -9,10 +9,10 @@ Array.from(FILTAR_BAR.children).forEach((item) => {
 
 //collection
 
-function SHOW_CARDS(index, array, limit_cards) {
+function SHOW_CARDS(page_number, array, limit_cards) {
     CARDS_CONTAINER.innerHTML = '';
 
-    for (let i = (index * limit_cards) - limit_cards; i < index * limit_cards && i < array.length; i++) {
+    for (let i = (page_number * limit_cards) - limit_cards; i < page_number * limit_cards && i < array.length; i++) {
         if (array.length > i) {
             CARDS_CONTAINER.innerHTML += `
             <div class="card">
@@ -29,21 +29,25 @@ function SHOW_CARDS(index, array, limit_cards) {
 
     //ADD EVENT LISTINER TO EVERY BUTTON INSIDE CARDS
     for (let i = 0; i < limit_cards; i++) {
-        if (array.length - ((index - 1) * limit_cards + i) > 0) {
+        if (array.length - ((page_number - 1) * limit_cards + i) > 0) {
 
-            CARDS_CONTAINER.children[i].children[1].children[2].addEventListener('click', (e) => {
-                REMOVE_FROM_DECK(array[i])
+            CARDS_CONTAINER.children[i].children[1].children[2].addEventListener('click', () => {
+                // i + START INDEX THAT SHOWS THE CONTENT OF THIS PAGE
+                REMOVE_FROM_DECK(array[i + ((page_number * limit_cards) - limit_cards)] , page_number)
             });
         }
     }
 }
 
-function REMOVE_FROM_DECK(element) {
+function REMOVE_FROM_DECK(element , page_number) {
 
-    collection = collection.filter(item => item.id != element.id)
-    CHANGE_LOCAL_STORAGE("collection", collection)
-    SHOW_CARDS(1, collection, 20)
+    console.log(element.id)
+    collection = collection.filter(item => item.id != element.id) ;
+    CHANGE_LOCAL_STORAGE("collection", collection) ;
+
+    SHOW_CARDS(page_number, collection, 4)
+    HANDLE_PAGINATION(collection, page_number - 1, 4);
 }
 
-SHOW_CARDS(1, collection, 20)
-HANDLE_PAGINATION(collection, 0, 20);
+SHOW_CARDS(1, collection, 4)
+HANDLE_PAGINATION(collection, 0, 4);
