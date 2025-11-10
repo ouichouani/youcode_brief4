@@ -1,5 +1,29 @@
 
 
+
+//DECLARATION DES VARIABLE ISSENCIEL
+const CARDS_CONTAINER = document.getElementById('cards_container');
+const PAGINATION_CONTAINER = document.getElementById('pagination_conatiner');
+const FILTAR_BAR = document.getElementById("filter_bar");
+
+!localStorage.getItem('data') && CHANGE_LOCAL_STORAGE('data', BASE_DATA);
+!localStorage.getItem('cart') && CHANGE_LOCAL_STORAGE('cart', []);
+!localStorage.getItem('collection') && CHANGE_LOCAL_STORAGE('collection', []);
+
+let data = JSON.parse(localStorage.getItem('data'));
+let cart = JSON.parse(localStorage.getItem('cart'));
+let collection = JSON.parse(localStorage.getItem('collection'));
+
+
+//ADD EVENT LISTINER TO EVERY BUTTON IN 
+
+// Array.from(FILTAR_BAR.children).forEach((item) => {
+//     item.addEventListener('click', () => {
+//         FILTER_CARDS(item.className , data);
+//     })
+// })
+
+//DATABASE
 const BASE_DATA = [
     { id: 1, img: "img/cards/card1.jpg", rarety: "Nice", price: 300, liked: false },
     { id: 2, img: "img/cards/card2.jpg", rarety: "Cool", price: 100, liked: false },
@@ -54,69 +78,116 @@ const BASE_DATA = [
     { id: 51, img: "img/cards/card52.jpg", rarety: "Cool", price: 10, liked: false }
 ];
 
-function fetch_data() {
-    !localStorage.getItem('data') && localStorage.setItem('data', JSON.stringify(BASE_DATA));
-    !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]));
+function ADD_TO_CART(card) {
+
+    if (cart.find(element => element.id == card.id)) {
+        card.quantity = 0
+        cart = cart.filter(element => (element.id != card.id))
+        CHANGE_LOCAL_STORAGE('cart', cart);
+
+        console.log(cart)
+
+    } else {
+        card.quantity = 1;
+        cart.push(card)
+        CHANGE_LOCAL_STORAGE('cart', cart);
+        console.log(cart)
+
+    }
+
 }
 
-function change_local_storage(item, arr1) {
+function CHANGE_LOCAL_STORAGE(item, arr1) {
     localStorage.setItem(item, JSON.stringify(arr1));
 }
 
-function show_cards(index, array) {
+function LIKE(liked_element, target) {
+
+    console.log(liked_element);
+    if (liked_element.liked) {
+
+        liked_element.liked = false;
+        target.src = '/img/assets/unlike.svg';
+        CHANGE_LOCAL_STORAGE('data', data);
+
+
+    } else {
+        target.src = '/img/assets/like.svg';
+        liked_element.liked = true;
+        console.log('favorite', liked_element);
+        CHANGE_LOCAL_STORAGE("data", data);
+    }
+
+}
+
+function SHOW_CARDS(start_page, array, limit_cards) {
     CARDS_CONTAINER.innerHTML = '';
 
-    for (let i = (index * 24) - 24; i < index * 24; i++) {
-
+    for (let i = (start_page * limit_cards) - limit_cards; i < start_page * limit_cards && i < array.length; i++) {
         if (array.length > i) {
             CARDS_CONTAINER.innerHTML += `
             <div class="card">
-            <img src="${array[i].img}" alt="">
-            <aside>
-            <span>${array[i].price}$</span>
-            <button class="like"><img src="${array[i].liked ? './img/assets/like.svg' : './img/assets/unlike.svg'}" alt=""></button>
-            <button class="cart"><img src = "./img/assets/add.svg"></button>
-            </aside>
+                <img src="${array[i].img}" alt="">
+                <aside>
+                    <span>${array[i].price}$</span>
+                    <button class="like"><img src="${array[i].liked ? './img/assets/like.svg' : './img/assets/unlike.svg'}" alt=""></button>
+                    <button class="cart"><img src = "./img/assets/add.svg"></button>
+                </aside>
             </div>
             `
         }
     }
 
     //ADD EVENT LISTINER TO EVERY BUTTON INSIDE CARDS
-    for (let i = 0; i < 24; i++) {
-        if (array.length - ((index - 1) * 24 + i) > 0) {
+    for (let i = 0; i < limit_cards; i++) {
+        if (array.length - ((start_page - 1) * limit_cards + i) > 0) {
 
             CARDS_CONTAINER.children[i].children[1].children[1].addEventListener('click', (e) => {
-                like(array[i], e.target);
+                // i + START start_page THAT SHOWS THE CONTENT OF THIS PAGE
+                LIKE(array[i + ((start_page * limit_cards) - limit_cards)], e.target, start_page);
             });
 
             CARDS_CONTAINER.children[i].children[1].children[2].addEventListener('click', (e) => {
-                add_to_cart(array[i]);
+                ADD_TO_CART(array[i]);
             });
         }
     }
 }
 
-function add_to_cart(added_card) {
+function FILTER_CARDS(rarety, array) {
+    let filtred_array = array.filter((item) => item.rarety == rarety);
+    HANDLE_PAGINATION(filtred_array, 0, 24)
+    SHOW_CARDS(1, filtred_array, 24);
 
-    if (cart.find(element => element.id == added_card.id)) {
-        added_card.quantity = 0
-        cart = cart.filter(element => (element.id != added_card.id))
-        change_local_storage('cart', cart)
+}
 
-        console.log(cart)
+//COUND AND CREATE NAVIGATION BUTTONS AND SHOW CARDS WHEN WE CLICK ON IT
+function HANDLE_PAGINATION(arr, activ_button_index, limit_cards) {
 
-    } else {
-        added_card.quantity = 1;
-        cart.push(added_card)
-        change_local_storage('cart', cart)
-        console.log(cart)
+    let NUMBER_PAGINATION = Math.ceil(arr.length / limit_cards);
 
+    if (NUMBER_PAGINATION > 0) {
+
+        PAGINATION_CONTAINER.innerHTML = '';
+        for (let i = 0; i < NUMBER_PAGINATION; i++) {
+            PAGINATION_CONTAINER.innerHTML += `<button ${activ_button_index == i && "class = 'activate' "}}><p>${i + 1}</p></button>`
+        }
+
+        const PAGINATION_BUTTONS = document.querySelectorAll("#pagination_conatiner button");
+        for (let i = 0; i < NUMBER_PAGINATION; i++) {
+            PAGINATION_BUTTONS[i].addEventListener('click', () => {
+                PAGINATION_BUTTONS.forEach(element => {
+                    element.classList.remove('activate');
+                });
+                PAGINATION_BUTTONS[i].classList.add('activate');
+                SHOW_CARDS(i + 1, arr, limit_cards);
+            })
+        }
     }
 
 }
 
-function display_cart() {
+function DISPLAY_CART() {
     let cart_side_bar = document.createElement("aside");
     let cart_container = document.createElement("section");
 
@@ -129,16 +200,17 @@ function display_cart() {
         </div>
 
         <div class="controle">
-            <span class="total_price">${200}</span>
+            <span class="total_price">${cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0)}</span>
             <button class="buy">buy</button>
             <button class="clear">clear</button>
         </div>
-        
-
     `
+
     cart_side_bar.appendChild(cart_container);
 
-    function display_cart_card() {
+    function display_cart_cards() {
+
+        cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0);
         cart_container.innerHTML = '';
         cart.forEach(element => {
             const card = document.createElement('div')
@@ -146,7 +218,7 @@ function display_cart() {
             card.innerHTML = `
             <img src="${element.img}" alt="">
             <aside>
-            <span>${element.price * element.quantity}$</span>
+            <span class="total_price">${element.price * element.quantity}$</span>
             <span class="quantity" >${element.quantity}</span>
             <div>
                 <button class="add" ><img src = "./img/assets/add.svg"></button>
@@ -156,56 +228,77 @@ function display_cart() {
             </aside>
             `
             cart_container.appendChild(card);
-            const last_card = cart_container.lastElementChild;
+            const REFRECH_TEXTCONTENT = () => {
+                card.querySelector('.total_price').textContent = `${element.price * element.quantity}$`;
+                card.querySelector('.quantity').textContent = element.quantity;
+                cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0);
 
-            last_card.querySelector('.add').addEventListener('click', () => {
+            }
+
+            card.querySelector('.add').addEventListener('click', () => {
                 element.quantity++
-                display_cart_card();
-
+                REFRECH_TEXTCONTENT()
+                CHANGE_LOCAL_STORAGE('cart', cart);
             });
-            last_card.querySelector('.minus').addEventListener('click', () => {
+
+            card.querySelector('.minus').addEventListener('click', () => {
                 if (element.quantity == 1) {
-                    add_to_cart(element);
-                    display_cart_card();
+                    ADD_TO_CART(element);
+                    display_cart_cards();
 
                 } else {
-                    element.quantity--
-                    display_cart_card();
+                    element.quantity--;
+                    REFRECH_TEXTCONTENT()
+                    CHANGE_LOCAL_STORAGE('cart', cart);
                 }
 
             });
-            last_card.querySelector('.cart').addEventListener('click', () => {
-                add_to_cart(element);
-                display_cart_card();
+
+            card.querySelector('.cart').addEventListener('click', () => {
+                ADD_TO_CART(element);
+                display_cart_cards();
             });
+
         });
     }
-    
+
     function clear_cart() {
         cart_container.innerHTML = '';
         cart.length = 0
-        localStorage.setItem('cart' , []) ;
-        console.log(cart)
-        console.log (localStorage.getItem('cart'))
+        CHANGE_LOCAL_STORAGE('cart', []);
     }
 
     function buy_cards() {
-        const collection = JSON.parse(localStorage.getItem('collection')) || []
-        localStorage.setItem('collection' ,JSON.stringify(collection.concat(cart)) )
+
+        collection.forEach(collection_item => {
+            cart.forEach(cart_item => {
+                console.log('collection : ', collection_item.id, ' cart : ', cart_item.id)
+                if (collection_item.id == cart_item.id) {
+
+                    collection_item.quantity += cart_item.quantity;
+                    cart = cart.filter(item => item.id != cart_item.id);
+
+                }
+            })
+        })
+
+        CHANGE_LOCAL_STORAGE('collection', collection.concat(cart));
+
         clear_cart()
+        display_cart_cards()
 
     }
-
-
 
     cart_side_bar.querySelector('button').addEventListener('click', (e) => {
         cart_side_bar.style.right = '-100%';
     })
+
     document.querySelector('#cart_button').addEventListener('click', (e) => {
         cart_side_bar.style.right = '0';
-        display_cart_card()
+        display_cart_cards()
 
     })
+
     cart_side_bar.querySelector('.buy').addEventListener('click', (e) => {
         console.log('buy');
         buy_cards();
@@ -218,13 +311,10 @@ function display_cart() {
 
     })
 
-
     cart_side_bar.appendChild(cart_container);
     Array.from(document.getElementsByTagName('main')).forEach(e => { e.appendChild(cart_side_bar) });
 
 }
 
-fetch_data();
-display_cart();
-
-let cart = JSON.parse(localStorage.getItem('cart'));
+//THIS FUNCTION IS COMMUN BETWEEN ALL PAGES
+DISPLAY_CART();
