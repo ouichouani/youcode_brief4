@@ -592,6 +592,12 @@ input {
     }
 }
 
+
+.card_container:has(.card.defence){
+    transform: rotate(-90deg);
+    margin: 0 2% ;
+}
+
 .card.defence aside{
     display: none;
 }
@@ -647,6 +653,10 @@ input {
 .play_layer>section button:last-of-type {
     grid-area: button2;
     background-color: rgb(21, 0, 255);
+}
+
+.desactivate{
+    opacity: .5;
 }
 
 @media (max-width : 767px) {
