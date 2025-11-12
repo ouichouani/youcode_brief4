@@ -540,15 +540,17 @@ input {
     gap: 2%;
     padding: 5px;
 }
+
 #play .hand .card {
     height: 100%;
 }
+
 #play .hand .card img {
     height: 100%;
 }
 
 /* #play .cards_container .cards */
- .card {
+.card {
     position: relative;
     overflow: hidden;
     /* width: 100%; */
@@ -556,12 +558,14 @@ input {
     max-height: 100%;
     flex-shrink: 0;
 }
+
 /* #play .cards_container .cards */
 
 
 /* #play .cards_container .cards */
 .card aside {
     width: 30%;
+    min-width: fit-content;
     padding: 10px;
     background-color: var(--color4);
     position: absolute;
@@ -574,10 +578,12 @@ input {
     display: flex;
     justify-content: space-evenly;
 }
+
 /* #play .cards_container .cards   */
 .card aside .cart {
     width: 25px;
 }
+
 /* #play .cards_container .cards  */
 
 .card:hover {
@@ -586,8 +592,62 @@ input {
     }
 }
 
+.card.defence aside{
+    display: none;
+}
 
+.play_layer {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.play_layer>section {
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    grid-template-areas: 'question question ' 'button1 button2';
+}
+
+.play_layer>section p {
+    /* background-color: green; */
+    grid-area: question;
+    text-align: center;
+}
+
+.play_layer>section button{
+    padding: 10px;
+    border-radius: 10px;
+    width: max-content;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.play_layer>section button:hover {
+    scale: 1.1;
+}
+
+.play_layer>section button:first-of-type {
+    grid-area: button1;
+    background-color: red;
+}
+
+.play_layer>section button:last-of-type {
+    grid-area: button2;
+    background-color: rgb(21, 0, 255);
+}
 
 @media (max-width : 767px) {
 
