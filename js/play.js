@@ -5,6 +5,7 @@ const PLAY_COLLECTION = document.querySelector('.cards_container .cards');
 const HAND = document.querySelector('.hand');
 const ARENA = document.querySelector(".arena");
 const PLAYER_CARDS = ARENA.querySelector('.player_cards');
+const OPONENT_CARDS = ARENA.querySelector('.opponent_cards');
 
 const PLAY_COLLECTION_CARDS = [];
 
@@ -21,7 +22,40 @@ collection.forEach(item => {
 
 ADD_EVENT_TO_LISTENERS();
 
-function BOT_TURN(){}
+function BOT_TURN() {
+    //BOT TURN STARTS , PREVENT PLAYER TO DO SOMTHING
+    const RANDOM_ELEMENT = OPONENT_CARDS.children[Math.floor(Math.random() * 5)];
+    
+    if (!RANDOM_ELEMENT.childElementCount) {
+        CHANGE_TURN()
+
+        //VARIABLE DATA FROM THE MAIN 
+        const RANDOM_CARD = data[Math.floor(Math.random() * data.length)];
+
+        const DIV = document.createElement('div');
+        DIV.classList.add('card') ;
+        
+        // ADD ATTACK OR DEFENCE CLASS RANDOMLY 
+        Math.floor(Math.random()*10) > 5 ? DIV.classList.add('attack')  : DIV.classList.add('defence') ;
+        
+        DIV.innerHTML = `
+            <img draggable = 'false' src="${RANDOM_CARD.img}" alt="">
+        `;
+        RANDOM_ELEMENT.appendChild(DIV);
+
+        //AFTER BOT ROOL END , ALLOW PLAYER TO PLAY HIS TURN
+        CHANGE_TURN()
+    }
+    else { 
+        // 
+        for(let i = 0 ; i < OPONENT_CARDS.childElementCount ; i++){
+            if(OPONENT_CARDS.children[i].childElementCount == 0){
+                return BOT_TURN() ;
+            }
+        }
+        console.log('nothing to play now bro')
+    }
+}
 
 function ATTACK() {
     if (!turn) return;
@@ -38,7 +72,7 @@ function ADD_EVENT_TO_LISTENERS() {
         PLAYER_CARDS.querySelectorAll('.card_container')[i].addEventListener('dragover', (e) => e.preventDefault());
     }
 
-    document.querySelector('.player_details').querySelector('button').addEventListener('click', CHANGE_TURN)
+    document.querySelector('.player_details').querySelector('button').addEventListener('click', BOT_TURN)
 
 }
 
@@ -66,8 +100,6 @@ function SHOW_CARDS(array) {
 function HANDLEDRAG_START(e) {
 
     if (!turn) return;
-
-    console.log(PLAY_COLLECTION_CARDS[e.target.getAttribute('id')].from && PLAY_COLLECTION_CARDS[e.target.getAttribute('id')].from)
     if (!PLAY_COLLECTION_CARDS[e.target.getAttribute('id')].from) {
         PLAY_COLLECTION_CARDS[e.target.getAttribute('id')].from = 'collection';
     }
@@ -131,11 +163,11 @@ function ATTACK_OR_DEFEND(placed_card) {
                 placed_card.classList.contains('defence') && placed_card.classList.remove('defence');
                 placed_card.classList.add(item.className);
                 ATTACK_OR_DEFEND();
-                CHANGE_TURN() ;
+                BOT_TURN();
 
             });
         });
-        
+
     }
 
 
@@ -150,19 +182,8 @@ function CHANGE_TURN() {
     HAND.classList.toggle('desactivate');
     PLAYER_CARDS.classList.toggle('desactivate');
     turn = !turn;
-
-    console.log('end of turn')
-
-    BOT_TURN()
-    setTimeout(() => {
-        COLLECTION_CONTAINER.classList.toggle('desactivate');
-        HAND.classList.toggle('desactivate');
-        PLAYER_CARDS.classList.toggle('desactivate');
-        turn = !turn;
-    }, 5000);
-
-
 }
+
 
 
 
