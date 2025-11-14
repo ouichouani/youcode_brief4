@@ -6,6 +6,62 @@ const CARDS_CONTAINER = document.getElementById('cards_container');
 const PAGINATION_CONTAINER = document.getElementById('pagination_conatiner');
 const FILTAR_BAR = document.getElementById("filter_bar");
 
+const BASE_DATA = [
+    { id: 1, img: "img/cards/card1.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 2, img: "img/cards/card2.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 3, img: "img/cards/card3.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 4, img: "img/cards/card4.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 5, img: "img/cards/card5.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 6, img: "img/cards/card6.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 7, img: "img/cards/card7.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 8, img: "img/cards/card8.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 9, img: "img/cards/card10.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 10, img: "img/cards/card11.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 11, img: "img/cards/card12.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 12, img: "img/cards/card13.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 13, img: "img/cards/card14.jpg", rarety: "Very_Rare", price: 900, liked: false , attack : 500 , defence : 820 },
+    { id: 14, img: "img/cards/card15.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 15, img: "img/cards/card16.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 16, img: "img/cards/card17.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 17, img: "img/cards/card18.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 18, img: "img/cards/card19.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 19, img: "img/cards/card20.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 20, img: "img/cards/card21.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 21, img: "img/cards/card22.jpg", rarety: "Very_Rare", price: 900, liked: false , attack : 820 , defence : 400 },
+    { id: 22, img: "img/cards/card23.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 23, img: "img/cards/card24.jpg", rarety: "Rare", price: 500, liked: false , attack : 300 , defence : 250 },
+    { id: 24, img: "img/cards/card25.jpg", rarety: "Rare", price: 500, liked: false , attack : 430 , defence : 170 },
+    { id: 25, img: "img/cards/card26.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 26, img: "img/cards/card27.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 27, img: "img/cards/card28.jpg", rarety: "Epic", price: 400, liked: false , attack : 500 , defence : 800 },
+    { id: 28, img: "img/cards/card29.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 29, img: "img/cards/card30.jpg", rarety: "Epic", price: 400, liked: false , attack : 500 , defence : 800 },
+    { id: 30, img: "img/cards/card31.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 31, img: "img/cards/card32.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 32, img: "img/cards/card33.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 33, img: "img/cards/card34.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 34, img: "img/cards/card35.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 35, img: "img/cards/card36.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 36, img: "img/cards/card37.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 37, img: "img/cards/card38.jpg", rarety: "Rare", price: 500, liked: false , attack : 300 , defence : 250 },
+    { id: 38, img: "img/cards/card39.jpg", rarety: "Rare", price: 500, liked: false , attack : 300 , defence : 250 },
+    { id: 39, img: "img/cards/card40.jpg", rarety: "Rare", price: 500, liked: false , attack : 300 , defence : 250 },
+    { id: 40, img: "img/cards/card41.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 41, img: "img/cards/card42.jpg", rarety: "Epic", price: 400, liked: false , attack : 500 , defence : 800 },
+    { id: 42, img: "img/cards/card43.jpg", rarety: "Epic", price: 400, liked: false , attack : 700 , defence : 500 },
+    { id: 43, img: "img/cards/card44.jpg", rarety: "Epic", price: 400, liked: false , attack : 500 , defence : 800 },
+    { id: 44, img: "img/cards/card45.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 45, img: "img/cards/card46.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 46, img: "img/cards/card47.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 47, img: "img/cards/card48.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 48, img: "img/cards/card49.jpg", rarety: "Nice", price: 300, liked: false , attack : 100 , defence : 100 },
+    { id: 49, img: "img/cards/card50.jpg", rarety: "Rare", price: 500, liked: false , attack : 300 , defence : 250 },
+    { id: 50, img: "img/cards/card51.jpg", rarety: "Cool", price: 100, liked: false , attack : 120 , defence : 200 },
+    { id: 51, img: "img/cards/card52.jpg", rarety: "Cool", price: 10, liked: false , attack : 120 , defence : 200 }
+];
+
+
+
 !localStorage.getItem('data') && CHANGE_LOCAL_STORAGE('data', BASE_DATA);
 !localStorage.getItem('cart') && CHANGE_LOCAL_STORAGE('cart', []);
 !localStorage.getItem('collection') && CHANGE_LOCAL_STORAGE('collection', []);
@@ -24,59 +80,6 @@ let collection = JSON.parse(localStorage.getItem('collection'));
 // })
 
 //DATABASE
-const BASE_DATA = [
-    { id: 1, img: "img/cards/card1.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 2, img: "img/cards/card2.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 3, img: "img/cards/card3.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 4, img: "img/cards/card4.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 5, img: "img/cards/card5.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 6, img: "img/cards/card6.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 7, img: "img/cards/card7.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 8, img: "img/cards/card8.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 9, img: "img/cards/card10.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 10, img: "img/cards/card11.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 11, img: "img/cards/card12.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 12, img: "img/cards/card13.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 13, img: "img/cards/card14.jpg", rarety: "Very_Rare", price: 900, liked: false },
-    { id: 14, img: "img/cards/card15.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 15, img: "img/cards/card16.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 16, img: "img/cards/card17.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 17, img: "img/cards/card18.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 18, img: "img/cards/card19.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 19, img: "img/cards/card20.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 20, img: "img/cards/card21.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 21, img: "img/cards/card22.jpg", rarety: "Very_Rare", price: 900, liked: false },
-    { id: 22, img: "img/cards/card23.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 23, img: "img/cards/card24.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 24, img: "img/cards/card25.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 25, img: "img/cards/card26.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 26, img: "img/cards/card27.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 27, img: "img/cards/card28.jpg", rarety: "Epic", price: 400, liked: false },
-    { id: 28, img: "img/cards/card29.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 29, img: "img/cards/card30.jpg", rarety: "Epic", price: 400, liked: false },
-    { id: 30, img: "img/cards/card31.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 31, img: "img/cards/card32.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 32, img: "img/cards/card33.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 33, img: "img/cards/card34.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 34, img: "img/cards/card35.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 35, img: "img/cards/card36.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 36, img: "img/cards/card37.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 37, img: "img/cards/card38.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 38, img: "img/cards/card39.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 39, img: "img/cards/card40.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 40, img: "img/cards/card41.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 41, img: "img/cards/card42.jpg", rarety: "Epic", price: 400, liked: false },
-    { id: 42, img: "img/cards/card43.jpg", rarety: "Epic", price: 400, liked: false },
-    { id: 43, img: "img/cards/card44.jpg", rarety: "Epic", price: 400, liked: false },
-    { id: 44, img: "img/cards/card45.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 45, img: "img/cards/card46.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 46, img: "img/cards/card47.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 47, img: "img/cards/card48.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 48, img: "img/cards/card49.jpg", rarety: "Nice", price: 300, liked: false },
-    { id: 49, img: "img/cards/card50.jpg", rarety: "Rare", price: 500, liked: false },
-    { id: 50, img: "img/cards/card51.jpg", rarety: "Cool", price: 100, liked: false },
-    { id: 51, img: "img/cards/card52.jpg", rarety: "Cool", price: 10, liked: false }
-];
 
 function ADD_TO_CART(card) {
 
@@ -97,8 +100,8 @@ function ADD_TO_CART(card) {
 
 }
 
-function CHANGE_LOCAL_STORAGE(item, arr1) {
-    localStorage.setItem(item, JSON.stringify(arr1));
+function CHANGE_LOCAL_STORAGE(item, arr) {
+    localStorage.setItem(item, JSON.stringify(arr));
 }
 
 function LIKE(liked_element, target) {
@@ -316,5 +319,5 @@ function DISPLAY_CART() {
 
 }
 
-//THIS FUNCTION IS COMMUN BETWEEN ALL PAGES
+// THIS FUNCTION IS COMMUN BETWEEN ALL PAGES
 DISPLAY_CART();
