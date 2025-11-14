@@ -1,27 +1,110 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <title>Document</title>
+    <!-- <link rel="stylesheet" href="style/home.css"> -->
+
 </head>
-<body>
-    
-    <div class="cart_side_bar">
 
-        <div class="flex justify-between w-[100%]">
-            <h2>CART</h2>
-            <button><img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer"></button>
+<body class=" font-bold bg-black text-[#FFF0C4]">
+
+
+    <header class="bg-black border-b-3 border-[#660B05] h-[12vh]  flex justify-between items-center sticky top-0 z-100 w-screen">
+        <img src="img/index/logo.svg" alt="" class="logo h-[80%]">
+        <nav class="hidden">
+            <ul class="flex gap-[50px] items-center">
+                <li><a class="text-[1.3em]" href="index.html">Home</a></li>
+                <li><a class="text-[1.3em]" href="play.html">Paly</a></li>
+                <li><a class="text-[1.3em]" href="Guide.html">Guide</a></li>
+                <li><a class="text-[1.3em]" href="Market.html">Market</a></li>
+                <li><a class="text-[1.3em]" href="My_Deck.html">My Deck</a></li>
+                <li><a class="text-[1.3em]" href="favorite.html">Favorite</a></li>
+            </ul>
+        </nav>
+        <img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer" id="cart_button">
+
+
+        <label for="burger_menu_input" class="burger_menu hidden">
+            <img src="./img/assets/book 1.svg" alt="">
+        </label>
+
+        <input type="checkbox" id="burger_menu_input" class="hidden">
+        <aside class="hidden h-screen w-[75vw] top-[0] right-[0] p-[30px] fixed bg-[#3E0703] " >
+            <ul class="flex flex-col gap-[20px]">
+                <li><a class="" href="index.html">Home</a></li>
+                <li><a class="" href="play.html">play</a></li>
+                <li><a class="" href="Guide.html">Guide</a></li>
+                <li><a class="" href="Market.html">Market</a></li>
+                <li><a class="" href="My_Deck.html">My Deck</a></li>
+                <li><a class="" href="Favorite.html">Favorite</a></li>
+            </ul>
+        </aside>
+
+    </header>
+
+    <main id="main_style">
+
+        <section>
+            <h1 class="text-[15vw]">MY DECK</h1>
+            <div class="flex w-full gap-4 flex-wrap ">
+                <input type="text" name="" id="" class="w-full md:w-[45%] h-[38px] rounded-[1000px] bg-[#C3503C] ">
+                <ul class="filter flex justify-evenly items-center w-screen mt-[10px] md:w-[50%] md-mt-[0]" id="filter_bar">
+                    <li class="Cool">Cool</li>
+                    <li class="Nice">Nice</li>
+                    <li class="Rare">Rare</li>
+                    <li class="Epic">Epic</li>
+                    <li class="Very_Rare">Very Rare</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="w-screen md:w-[80%] grid grid-cols-2 gap-2 mt-[2rem]" id="cards_container">
+        </section>
+
+        <section id="pagination_conatiner" class="w-full">
+        </section>
+    </main>
+
+
+    <footer class="w-screen flex justify-center flex-wrap gap-4 mt-[10vh] p-[10vh] ">
+        <div class="md:w-[50%] flex justify-center items-center">
+            <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] object-cover">
         </div>
+        <section class="flex justify-between w-full md:w-[40%] p-[10px]">
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] mb-[.5rem] text-[#C3503C]">Game</li>
+                <li class=""><a href="">How to play</a></li>
+                <li class=""><a href="">Devs</a></li>
+                <li class=""><a href="">Mobile App</a></li>
+            </ul>
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] text-[#C3503C]"><span>Contact</span></li>
+                <li class=""><a href="">Help/FAQ</a></li>
+                <li class=""><a href="">Content</a></li>
+                <li class=""><a href="">Address</a></li>
+            </ul>
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] text-[#C3503C]"><span>More</span></li>
+                <li class=""><a href="">policies</a></li>
+                <li class=""><a href="">About</a></li>
+                <li class=""><a href="">Get plushy now !</a></li>
+            </ul>
+        </section>
+    </footer>
 
-        <div class="controle">
-            <span class="total_price"></span>
-            <button class="bay">bay</button>
-            <button class="clear">clear</button>
-        </div>
+    <script src="js/main.js"></script>
+    <script src="js/myDeck.js"></script>
 
-    </div>
+
+
+
 
 </body>
-</html> -->
+
+</html>
