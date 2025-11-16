@@ -1,46 +1,59 @@
-       :root {
-           --color1: #3E0703;
-           --color2: #660B05;
-           --color3: #8C1007;
-           --color4: #C3503C;
-           --color5: #FFF0C4;
-           --color6: #FEB1A3;
-           --main-color: black;
 
-           --title-size: 3.1rem;
-           --text-size: 20px;
-       }
 
-       .activate {
-           background-color: var(--color4);
-           transform: rotate(45deg);
 
-           p {
-               color: var(--color5);
-               transform: rotate(-45deg);
-           }
-       }
+:root {
+    --color1: #3E0703;
+    --color2: #660B05;
+    --color3: #8C1007;
+    --color4: #C3503C;
+    --color5: #FFF0C4;
+    --color6: #FEB1A3;
+    --main-color: black;
 
-       .card:hover aside {
-           right: 0;
-       }
+    --title-size: 3.1rem;
+    --text-size: 20px;
+}
 
-       .card aside {
-           padding: 10px;
-           background-color: var(--color4);
-           border-radius: 0 0 0 10px;
+.activate {
+    background-color: var(--color4);
+    transform: rotate(45deg);
 
-       }
+    p {
+        color: var(--color5);
+        transform: rotate(-45deg);
+    }
+}
 
-       .card aside button {
-           cursor: pointer;
-       }
+.card:hover aside {
+    right: 0;
+}
 
-       .card aside button img {
-           width: 100%;
-           object-fit: contain;
-       }
+.card aside {
+    padding: 10px;
+    background-color: var(--color4);
+    border-radius: 0 0 0 10px;
 
-       #burger_menu_input:checked + aside{
-            right: 0;
-       }
+}
+
+.card aside button {
+    cursor: pointer;
+}
+
+.card aside button img {
+    width: 100%;
+    object-fit: contain;
+}
+
+#burger_menu_input:checked+aside {
+    right: 0;
+}
+
+::-webkit-scrollbar {
+    background-color: var(--color2);
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color5);
+    border-radius: 1000px;
+}

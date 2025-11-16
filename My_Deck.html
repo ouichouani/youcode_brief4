@@ -5,55 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
 
     <title>Document</title>
     <!-- <link rel="stylesheet" href="style/home.css"> -->
 
 </head>
 
-<body class=" font-bold bg-black ">
+<body class=" font-bold bg-black text-[#FFF0C4]">
 
-
-    <header class="border-b-3 h-[80px]  flex justify-between items-center sticky top-0 z-100 w-screen">
-        <img src="img/index/logo.svg" alt="" class="logo">
-        <nav>
-            <ul class="flex gap-[50px]">
-                <li><a class="text-[1.3em]" href="index.html">Home</a></li>
-                <li><a class="text-[1.3em]" href="play.html">Paly</a></li>
-                <li><a class="text-[1.3em]" href="Guide.html">Guide</a></li>
-                <li><a class="text-[1.3em]" href="Market.html">Market</a></li>
-                <li><a class="text-[1.3em]" href="My_Deck.html">My Deck</a></li>
-                <li><a class="text-[1.3em]" href="favorite.html">Favorite</a></li>
+    <header class="bg-black border-b-3 border-[#660B05] h-[12vh] flex justify-between items-center sticky top-0 z-10 w-full">
+        <img src="img/index/logo.svg" alt="" class="logo h-[80%]">
+        <nav class="md:block hidden">
+            <ul class="flex gap-[50px] items-center">
+                <li><a class="lg:text-[1.5vw]" href="index.html">Home</a></li>
+                <li><a class="lg:text-[1.5vw]" href="play.html">Paly</a></li>
+                <li><a class="lg:text-[1.5vw]" href="Guide.html">Guide</a></li>
+                <li><a class="lg:text-[1.5vw]" href="Market.html">Market</a></li>
+                <li><a class="lg:text-[1.5vw]" href="My_Deck.html">My Deck</a></li>
+                <li><a class="lg:text-[1.5vw]" href="favorite.html">Favorite</a></li>
             </ul>
         </nav>
         <img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer" id="cart_button">
 
 
-        <label for="burger_menu_input" class="burger_menu">
-            <img src="./img/assets/book 1.svg" alt="">
+        <label for="burger_menu_input" class="burger_menu z-10 w-[50px] mt-[20px] md:hidden">
+            <img src="./img/assets/book 1.svg" alt="" class="object-cover w-full">
         </label>
 
-        <input type="checkbox" id="burger_menu_input">
-        <aside>
-            <ul class="">
+        <input type="checkbox" id="burger_menu_input" class="hidden">
+        <aside class="h-screen w-[200px] top-[0] right-[-100%] p-[30px] fixed bg-[#3E0703] ease duration-[1s] md:hidden" >
+            <ul class="flex flex-col gap-[20px]">
                 <li><a class="" href="index.html">Home</a></li>
                 <li><a class="" href="play.html">play</a></li>
                 <li><a class="" href="Guide.html">Guide</a></li>
                 <li><a class="" href="Market.html">Market</a></li>
                 <li><a class="" href="My_Deck.html">My Deck</a></li>
-                <li><a class="" href="favorite.html">Favorite</a></li>
+                <li><a class="" href="Favorite.html">Favorite</a></li>
             </ul>
         </aside>
 
     </header>
 
-    <main id="main_style">
-        <section>
-            <h1 class="text-[6rem]">MY DECK</h1>
-            <div class="flex w-[100%]  gap-[auto] ">
-                <input type="text" name="" id="" class="bg-white w-[45%] h-[38px] rounded-[1000px]">
-                <ul class="filter flex justify-evenly items-center w-[50%] " id="filter_bar">
+    <main>
+        <section class="sm:w-[85%] m-[auto] mb-[50px]"  >
+            <h1 class="md:text-[8vw] text-[15vw]">MY DECK</h1>
+            <div class="flex w-full gap-4 flex-wrap ">
+                <input type="text" name="" id="" class="w-full md:w-[45%] h-[38px] rounded-[1000px] bg-[#C3503C] ">
+                <ul class="filter flex justify-evenly items-center w-full mt-[10px] md:w-[50%] md-mt-[0]" id="filter_bar">
                     <li class="Cool">Cool</li>
                     <li class="Nice">Nice</li>
                     <li class="Rare">Rare</li>
@@ -63,34 +62,34 @@
             </div>
         </section>
 
-        <section class="" id="cards_container">
+        <section class="w-full sm:w-[85%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 m-[auto] mt-[5vw] " id="cards_container">
         </section>
 
-        <section id="pagination_conatiner">
+        <section id="pagination_conatiner" class="flex justify-end gap-[15px] mt-[50px] w-[85%] m-[auto] ">
         </section>
+
     </main>
 
-
-    <footer class=" h-[15rem] flex gap-[134px] border-t-3 justify-center items-center min-h-fit ">
-        <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] ">
-        <section class="liks_container flex gap-[134px]">
-            <ul>
-                <li class="text-[21px] mb-[.5rem] "><span>Game</span></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">How to play</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Devs</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Mobile App</a></li>
+    <footer class="w-full flex justify-center flex-wrap gap-4 mt-[10vh] p-[10px] ">
+        <img src="img/footer/footer_logo.png" alt="" class="footer_logo w-[249px] object-cover">
+        <section class="flex justify-between w-full md:w-[60%] p-[10px] text-center">
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] mb-[.5rem] text-[#C3503C]">Game</li>
+                <li class=""><a href="">Devs</a></li>
+                <li class=""><a href="">How to play</a></li>
+                <li class=""><a href="">Mobile App</a></li>
             </ul>
-            <ul>
-                <li class="text-[21px] mb-[.5rem] "><span>Contact</span></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Help/FAQ</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Content</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Address</a></li>
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] mb-[.5rem] text-[#C3503C]"><span>Contact</span></li>
+                <li class=""><a href="">Help/FAQ</a></li>
+                <li class=""><a href="">Content</a></li>
+                <li class=""><a href="">Address</a></li>
             </ul>
-            <ul>
-                <li class="text-[21px] mb-[.5rem] "><span>More</span></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Privacy policies</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">About Card wars</a></li>
-                <li class="text-[18px] mb-[.5rem] font-medium"><a href="">Get your plushy now !</a></li>
+            <ul class="w-[30%] flex flex-col gap-4">
+                <li class="text-[20px] mb-[.5rem] text-[#C3503C]"><span>More</span></li>
+                <li class=""><a href="">policies</a></li>
+                <li class=""><a href="">About</a></li>
+                <li class=""><a href="">Get plushy now !</a></li>
             </ul>
         </section>
     </footer>
