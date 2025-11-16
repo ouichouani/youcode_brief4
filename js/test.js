@@ -129,12 +129,12 @@ function SHOW_CARDS(start_page, array, limit_cards) {
     for (let i = (start_page * limit_cards) - limit_cards; i < start_page * limit_cards && i < array.length; i++) {
         if (array.length > i) {
             CARDS_CONTAINER.innerHTML += `
-            <div class="card">
+            <div class="card relative overflow-hidden">
                 <img src="${array[i].img}" alt="">
-                <aside>
-                    <span>${array[i].price}$</span>
-                    <button class="like"><img src="${array[i].liked ? './img/assets/like.svg' : './img/assets/unlike.svg'}" alt=""></button>
-                    <button class="cart"><img src = "./img/assets/add.svg"></button>
+                <aside class='absolute top-0 right-[-100%] p-[10px] w-fit min-w-[50%] transition-all ease duration-[.5s] flex items-center justify-evenly gap-[10px]'>
+                    <span class= 'lg:text-[1.3vw]'>${array[i].price}$</span>
+                    <button class="like w-[50%]"><img class='object-cover w-full' src="${array[i].liked ? './img/assets/like.svg' : './img/assets/unlike.svg'}" alt=""></button>
+                    <button class="cart w-[40%]"><img class='object-cover w-full' src = "./img/assets/add.svg"></button>
                 </aside>
             </div>
             `
@@ -173,7 +173,7 @@ function HANDLE_PAGINATION(arr, activ_button_index, limit_cards) {
 
         PAGINATION_CONTAINER.innerHTML = '';
         for (let i = 0; i < NUMBER_PAGINATION; i++) {
-            PAGINATION_CONTAINER.innerHTML += `<button ${activ_button_index == i && "class = 'activate' "}}><p>${i + 1}</p></button>`
+            PAGINATION_CONTAINER.innerHTML += `<button class =" w-[40px] h-[40px] bg-[#FFF0C4] transition-all ease-in-out duration-[0.5s] ${activ_button_index == i ?  'activate' : '' } " }><p class="text-[#C3503C]" >${i + 1}</p></button>`
         }
 
         const PAGINATION_BUTTONS = document.querySelectorAll("#pagination_conatiner button");
@@ -194,18 +194,18 @@ function DISPLAY_CART() {
     let cart_side_bar = document.createElement("aside");
     let cart_container = document.createElement("section");
 
-    cart_side_bar.className = 'cart_side_bar';
+    cart_side_bar.className = 'cart_side_bar w-[50vw] bg-[#3E0703] h-screen absolute bottom-0 right-[-100%] fixed p-[5px] z-100 transition-all ease duration-[1s] ';
     cart_side_bar.innerHTML = `
     
-        <div class='header' >
-            <h2>CART</h2>
+        <div class='flex justify-between p-[10px]' >
+            <h2 class="text-[6vw] lg:text-[60px]">CART</h2>
             <button><img src="img/index/card.svg" alt="" class="mr-[10px] cursor-pointer"></button>
         </div>
 
-        <div class="controle">
-            <span class="total_price">${cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0)}</span>
-            <button class="buy">buy</button>
-            <button class="clear">clear</button>
+        <div class="controle flex flex-col gap-4 absolute top-[10vh] left-0 w-fit p-[10px] translate-x-[-100%] bg-[#FFF0C4] rounded-[10px] ">
+            <span class="total_price text-[#8C1007] text-center">${cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0)}</span>
+            <button class="buy w-[100px] p-[10px] bg-red-800 rounded-[10px] bg-[#8C1007]">buy</button>
+            <button class="clear w-[100px] p-[10px] bg-red-800 rounded-[10px] bg-[#8C1007] ">clear</button>
         </div>
     `
 
@@ -215,19 +215,22 @@ function DISPLAY_CART() {
 
         cart_side_bar.querySelector('.controle span').textContent = cart.reduce((total_quantity, current_quantity) => total_quantity + (current_quantity.quantity * current_quantity.price), 0);
         cart_container.innerHTML = '';
+        cart_container.className = 'grid lg:grid-cols-3 sm:grid-cols-2  gap-2 justify-center h-full pb-[120px] overflow-auto';
+
         cart.forEach(element => {
             const card = document.createElement('div')
-            card.className = "card";
+            card.className = "card relative  h-max overflow-hidden  ";
             card.innerHTML = `
+            
             <img src="${element.img}" alt="">
-            <aside>
-            <span class="total_price">${element.price * element.quantity}$</span>
-            <span class="quantity" >${element.quantity}</span>
-            <div>
-                <button class="add" ><img src = "./img/assets/add.svg"></button>
-                <button class="minus" ><img src = "./img/assets/minus.svg"></button>
-                <button class="cart" ><img src = "./img/assets/x.svg"></button>
-            </div>
+            <aside class ='absolute top-0 right-[-100%]  p-[10px] w-fit  gap-4 transition-all ease duration-[.5s] flex items-center '>
+                <span class="total_price lg:text-[1.3vw]">${element.price * element.quantity}$</span>
+                <span class="quantity lg:text-[1.3vw]" >${element.quantity}</span>
+                <div class='h-[1px] flex items-center gap-[2px] '>
+                    <button class="add w-[20px] md:w-[30px] " ><img src = "./img/assets/add.svg"></button>
+                    <button class="minus w-[20px] md:w-[30px] " ><img src = "./img/assets/minus.svg"></button>
+                    <button class="cart w-[20px] md:w-[30px] " ><img src = "./img/assets/x.svg"></button>
+                </div>
             </aside>
             `
             cart_container.appendChild(card);
@@ -315,9 +318,7 @@ function DISPLAY_CART() {
     })
 
     cart_side_bar.appendChild(cart_container);
-    // Array.from(document.getElementsByTagName('main')).forEach(e => { e.appendChild(cart_side_bar) });
     document.body.appendChild(cart_side_bar);
-
 }
 
 // THIS FUNCTION IS COMMUN BETWEEN ALL PAGES
